@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="..\static\styles\stylesheet.css">
+</head>
+<body style="background: url('../static/images/simple_crm_background.png') no-repeat center center fixed; background-size: cover;">
+    <div id="menu-placeholder"></div>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+        <div class="form-link">
+            No account? Register <a href="register.html">Here!</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => document.getElementById('menu-placeholder').innerHTML = data)
+                .catch(error => console.error("Error loading menu:", error));
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="..\static\styles\stylesheet.css">
+    <style>
+        body {
+            background-color: #f2f2f2; /* Light gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .background-container {
+            width: 50%; /* Shrink the image to 50% of its original size */
+            max-width: 600px; /* Prevent it from getting too large */
+            margin-top: 20px;
+            margin-bottom: 10px; /* Add spacing below the image */
+        }
+
+        .background-container img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="menu-placeholder"></div>
+
+    <div class="background-container">
+        <img src="../static/images/simple_crm_background.png" alt="Background Image">
+    </div>
+
+    <div class="form-container">
+        <h2>Welcome to Your Home Page</h2>
+        <p>The cosmic jellyfish drift through endless seas of stardust, weaving new galaxies.</p>
+        <p>Beyond the horizon, a hidden valley glows with bioluminescent flora that hum in harmony.</p>
+        <p>Ancient books whisper forgotten knowledge to those who dare to listen closely.</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => document.getElementById('menu-placeholder').innerHTML = data)
+                .catch(error => console.error("Error loading menu:", error));
+        });
+    </script>
+
+</body>
+</html>
