@@ -13,13 +13,15 @@
             <nav class="nav">
                 <a th:href="@{/login}" class="button login">Login</a>
                 <a th:href="@{/register}" class="button register">Register</a>
+                <a th:href="@{/}" class="button home">&#9875</a>
             </nav>
         </div>
     </header>
 
     <div class="form-container">
         <h2>Register Here</h2>
-        <form class="form" th:action="@{/register}" th:method="POST" th:object="${registerRequest}">
+         <form class="form" th:action="@{/register}" th:method="POST" th:object="${registerRequest}">
+
             <input type="text" placeholder="Username" id="username" th:field="*{username}" required>
             <p class="alert-warning" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
             <p class="alert-warning" th:text="${usernameAlreadyExistMessage}"></p>

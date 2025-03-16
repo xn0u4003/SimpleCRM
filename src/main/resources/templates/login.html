@@ -14,6 +14,7 @@
             <nav class="nav">
                 <a th:href="@{/login}" class="button login">Login</a>
                 <a th:href="@{/register}" class="button register">Register</a>
+                <a th:href="@{/}" class="button home">&#9875</a>
             </nav>
         </div>
     </header>
@@ -21,11 +22,13 @@
     <div class="login-container">
         <h2>Login</h2>
         <form class="form" th:action="@{/login}" th:method="POST" th:object="${loginRequest}">
+
             <input type="text" placeholder="Username" id="username" th:field="*{username}" required>
+            <p></p>
 
             <input type="password" placeholder="Password" id="password" th:field="*{password}" required>
             <p class="alert-warning" th:if="${errorMessage}" th:text="${errorMessage}"></p>
-
+            <p></p>
             <button type="submit">Log In</button>
         </form>
         <div class="form-link">
