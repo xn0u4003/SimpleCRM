@@ -1,78 +1,79 @@
 package app.invoice.model;
 
+import app.client.model.Client;
+import app.contract.model.Contract;
+import app.contract.model.Product;
+import app.shipment.model.Shipment;
+import app.user.model.User;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Currency;
+import java.util.List;
 
 @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Entity
-    @Table(name = "invoices")
-    public class Invoice {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long invoiceNumber;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "invoices")
+public class Invoice {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long invoiceNumber;
 
-        @Column(nullable = false, unique = true)
-        private String clientCompanyName;
+    @ManyToOne
+    private Client client;
 
-        private String clientAddress;
+    @ManyToOne
+    private Contract contract;
 
-        @Column(unique = true)
-        private String vatNumber;
+    @ManyToOne
+    private User owner;
 
-        @Column(nullable = false)
-        private LocalDateTime invoiceDate;
+    @Column(nullable = false)
+    private LocalDateTime invoiceDate;
 
-        private String paymentTerms;
+    private String paymentTerms;
 
-        @Column(nullable = false)
-        private LocalDateTime paymentDueDate;
+    @Column(nullable = false)
+    private LocalDateTime paymentDueDate;
 
-        @Column(nullable = false)
-        private String contractNumber;
+    @Column(nullable = false)
+    private String deliveryLocation;
 
-        @Column(nullable = false)
-        @Enumerated(EnumType.STRING)
-        private DeliveryTerms deliveryTerms;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Product product;
 
-        @Column(nullable = false)
-        private String deliveryLocation;
+    @Column(nullable = false)
+    private Currency currency;
 
-        @Column(nullable = false)
-        @Enumerated(EnumType.STRING)
-        private Product product;
+    @Column(nullable = false)
+    private BigDecimal unitPrice;
 
-        @Column(nullable = false)
-        private Currency currency;
+    @Column(nullable = false)
+    private BigDecimal invoiceValue;
 
-        @Column(nullable = false)
-        private BigDecimal unitPrice;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private VatStatus vatStatus;
 
-        @Column(nullable = false)
-        private BigDecimal invoiceValue;
+    @Column
+    private String comment;
 
-        @Column(nullable = false)
-        @Enumerated(EnumType.STRING)
-        private VatStatus vatStatus;
+    @Column(nullable = false)
+    private LocalDateTime createdOn;
 
-        @Column
-        private String comment;
+    @Column(nullable = false)
+    private LocalDateTime updatedOn;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "invoice")
+    private List<Shipment> invoiceShipments = new ArrayList<>();
 
 
-//    TODO: Link to User
-        /*
-        @ManyToOne
-        private User owner;*/
-
-//    TODO: Link to Clients
-
-//    TODO: Link to Contracts
-
-    }
+}

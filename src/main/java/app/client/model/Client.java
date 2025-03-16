@@ -1,10 +1,15 @@
 package app.client.model;
 
+import app.contract.model.Contract;
+import app.invoice.model.Invoice;
+import app.shipment.model.Shipment;
 import app.user.model.User;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Builder
@@ -39,7 +44,13 @@ public class Client {
     @ManyToOne
     private User owner;
 
-//    TODO: Link to Contracts
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client")
+    private List<Invoice> clientInvoices = new ArrayList<>();
 
-//    TODO: Link to Invoices
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client")
+    private List<Contract> clientContracts = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client")
+    private List<Shipment> clientShipments = new ArrayList<>();
+
 }

@@ -1,6 +1,9 @@
 package app.user.model;
 
 import app.client.model.Client;
+import app.contract.model.Contract;
+import app.invoice.model.Invoice;
+import app.shipment.model.Shipment;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -49,7 +52,15 @@ public class User {
     private LocalDateTime updatedOn;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
-    @OrderBy("createdOn DESC")
     private List<Client> clients = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
+    private List<Invoice> invoices = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
+    private List<Contract> contracts = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
+    private List<Shipment> shipments = new ArrayList<>();
 
 }

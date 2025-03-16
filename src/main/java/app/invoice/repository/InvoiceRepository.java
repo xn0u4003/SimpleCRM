@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface InvoiceRepository extends JpaRepository<User, UUID> {
+public interface InvoiceRepository extends JpaRepository<User, Long> {
 
-    Optional<Invoice> findByClientCompanyName(String clientCompanyName);
+//    Optional<Invoice> findByClientCompanyName(String companyName);
 }

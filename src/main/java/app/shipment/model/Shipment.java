@@ -1,14 +1,15 @@
-package app.contract.model;
+package app.shipment.model;
 
 import app.client.model.Client;
+import app.contract.model.Contract;
+import app.contract.model.DeliveryTerms;
 import app.invoice.model.Invoice;
-import app.shipment.model.Shipment;
+import app.contract.model.Product;
 import app.user.model.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Builder
@@ -17,8 +18,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "contracts")
-public class Contract {
+@Table(name = "shipments")
+public class Shipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -28,29 +29,29 @@ public class Contract {
     private Client client;
 
     @ManyToOne
+    private Contract contract;
+
+    @ManyToOne
     private User owner;
+
+    @ManyToOne
+    private Invoice invoice;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Product product;
 
     @Column(nullable = false)
-    private double quantity;
-
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private DeliveryTerms deliveryTerms;
 
     @Column(nullable = false)
-    private String qoutationalPeriod;
+    private LocalDateTime shipmentDate;
 
     @Column(nullable = false)
-    private String deliveryPeriod;
+    private LocalDateTime createdOn;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "contract")
-    private List<Invoice> contractInvoices = new ArrayList<>();
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "contract")
-    private List<Shipment> contractShipments = new ArrayList<>();
+    @Column(nullable = false)
+    private LocalDateTime updatedOn;
 
 }
