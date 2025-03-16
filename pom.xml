@@ -8,11 +8,11 @@
 		<version>3.4.0</version>
 		<relativePath/>
 	</parent>
-	<groupId>smart-wallet</groupId>
-	<artifactId>smart-wallet-application</artifactId>
+	<groupId>simple-crm</groupId>
+	<artifactId>simple-crm-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Smart Wallet Application</name>
-	<description>Smart Wallet Application</description>
+	<name>Simple CRM Application</name>
+	<description>Simple CRM Application</description>
 	<url/>
 	<licenses>
 		<license/>

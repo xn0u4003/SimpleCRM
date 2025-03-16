@@ -1,0 +1,111 @@
+/* Global Styles */
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #1a1a1a; /* Darker background */
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: row; /* Side menu + content */
+  height: 100vh;
+}
+
+/* Sidebar Navigation (Thinner Black Strip) */
+.navbar {
+  width: 500px; /* Thinner vertical menu */
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 20px 0;
+  writing-mode: vertical-rl; /* Rotates text for vertical effect */
+  text-orientation: mixed;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #7095e0; /* Light blue hover effect */
+}
+
+/* Main Content Area */
+.main-content {
+  margin-left: 80px; /* Adjusted for sidebar width */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Buttons - Modern Look */
+.button {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 18px;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #7095e0, #6e6bd5);
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Header Styling */
+.header {
+  width: 100%;
+  background-color: transparent;
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+/* Header Buttons */
+.header .nav {
+  display: flex;
+  gap: 12px;
+}
+
+.footer {
+  color: rgba(255, 255, 255, 0.69);
+  text-align: center;
+  margin-top: auto;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Warning Text */
+.alert-warning {
+  font-size: 14px;
+  background: linear-gradient(to left, #f88e8e, #f56767, #f53b3b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

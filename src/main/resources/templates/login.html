@@ -5,16 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="..\static\styles\stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
 </head>
-<body style="background: url('../static/images/simple_crm_background.png') no-repeat center center fixed; background-size: cover;">
-    <div id="menu-placeholder"></div>
+<body style="background: url('/images/simple_crm_background.png') no-repeat center center fixed; background-size: cover;">
+    <header class="header">
+        <div class="header-inner">
+            <nav class="nav">
+                <a th:href="@{/login}" class="button login">Login</a>
+                <a th:href="@{/register}" class="button register">Register</a>
+            </nav>
+        </div>
+    </header>
 
     <div class="login-container">
         <h2>Login</h2>
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
+        <form class="form" th:action="@{/login}" th:method="POST" th:object="${loginRequest}">
+            <input type="text" placeholder="Username" id="username" th:field="*{username}" required>
+
+            <input type="password" placeholder="Password" id="password" th:field="*{password}" required>
+            <p class="alert-warning" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
             <button type="submit">Log In</button>
         </form>
         <div class="form-link">
@@ -22,16 +33,7 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('menu.html')
-                .then(response => response.text())
-                .then(data => document.getElementById('menu-placeholder').innerHTML = data)
-                .catch(error => console.error("Error loading menu:", error));
-        });
-    </script>
-
-</body>
-</html>
+<th:block th:insert="~{fragments/footer :: footer}"></th:block>
+</body></html>
 
 
